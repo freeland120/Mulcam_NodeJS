@@ -13,8 +13,7 @@ router.post('/',(req,res,next)=>{
         database:"nodejs"
       });    //연결 객체를 만듬
       
-      con.connect((err)=>{
-        if (err) throw err;
+     
         console.log("Connected!");
         //회원가입처리
         const name=req.body.name;
@@ -32,7 +31,7 @@ router.post('/',(req,res,next)=>{
           }
           
         }); //연결 객체를 연결
-    });
+   
       ///////////////////////////////// 
     //members.push(req.body);
     //console.log(members); //회원가입에 들어가있는 멤버들을 볼수 있다

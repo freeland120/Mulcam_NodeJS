@@ -1,3 +1,5 @@
+const boardRouter=require('./routes/board');
+const basketRouter=require('./routes/basket');
 const indexRouter=require('./routes/index');
 const logoutRouter=require('./routes/logout');
 const loginRouter=require('./routes/login');
@@ -25,9 +27,13 @@ app.use(session({
 
 
 app.use('/',indexRouter);
-app.use('/logout',logoutRouter);
-app.use('/login',loginRouter);
 app.use('/contact',contactRouter);
+app.use('/login',loginRouter);
+app.use('/logout',logoutRouter);
+app.use('/basket',basketRouter);
+app.use('/board',boardRouter);
+
+
 
 
 app.listen(3000,()=>{

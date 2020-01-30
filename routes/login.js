@@ -1,17 +1,11 @@
-const mysql=require('mysql');
-const members=require('./members');
+const con=require('./mysql_con');
+//const mysql=require('mysql');
 const express=require('express');
 const router=express.Router();
 
 router.post('/',(req,res,next)=>{      
     
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "mysql",
-        database: "nodejs",
-        port:"3307"
-      });
+    
       
       /* con.connect((err)=>{
           if(err) throw err;
@@ -28,11 +22,9 @@ router.post('/',(req,res,next)=>{
               }
           });
       }); */
-
       
-      
-       con.connect((err)=>{
-        if (err) throw err;
+        con.connect((err)=>{
+       // if(err) throw err;
         let sql=`SELECT * FROM members WHERE email='${req.body.email}'`;
         con.query(sql, function (err, result, fields) {
             let message;
@@ -42,17 +34,17 @@ router.post('/',(req,res,next)=>{
             const name =result[0].name;
               req.session.email=req.body.email;
               req.session.name=name;
+              req.session.m_no=result[0].no;
               message=`${name}님 OK!🏓`;
           }else{
               message=`Login Fail`;
           }
-
+        
           res.json({message});
 
           
-        });
-      }); 
-
+        });//ebd query
+    }); //end connect
 
 /* con.connect(function(err) {
         if (err) throw err;

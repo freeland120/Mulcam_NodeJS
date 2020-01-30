@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="http://localhost:3000/js/client.js"></script>
+    
+    
+    <title><%= title %></title>
+</head>
+<body>
+    
+    
+    <table class="table" style="margin:20px,20px;" border="1" width="750" align="center">
+        <tr><th>no</th><th>글 번호</th><th>글 제목</th><th>작성자</th><th>조회수</th><th>작성날짜 및 시간</th></tr>
+        <% 
+        let tr_color=["success","danger"];
+        for(let i=0; i<result.length;i++){ 
+        
+            %>
+        <tr class=<%= tr_color[(i%2)] %> > <td><%= i %></td><td><%= result[i].bo_no %></td><td><%= result[i].title %></td><td><%= result[i].name %></td><td><%= result[i].m_no %></td><td><%= result[i].createdAt %></td></tr>
+        <% 
+        }
+        %>
+
+    </table> 
+
+
+</body>
+</html>
